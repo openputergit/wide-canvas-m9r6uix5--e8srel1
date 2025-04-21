@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlanzBooks - Your Digital Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7ab30f',
+                        secondary: '#f9f5f5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #7ab30f;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-secondary min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <img class="h-8 w-auto" src="https://firebasestorage.googleapis.com/v0/b/widecanvas-d0dd4.appspot.com/o/logos%2Flogo_glanzbooks.png?alt=media&token=8b08d256-18a7-46ee-8810-49ff523d0cf3" alt="GlanzBooks Logo">
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-4">
+                        <a href="#" class="text-primary hover:text-primary/80 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Library</a>
+                        <a href="#" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#" class="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90">Login</button>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700">
+                        <i class="bi bi-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#" class="text-primary block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#" class="text-gray-700 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Library</a>
+                <a href="#" class="text-gray-700 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#" class="text-gray-700 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <button class="w-full bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 mt-2">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Left Sidebar -->
+            <div class="md:w-1/4 space-y-4">
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Fiction</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Non-Fiction</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Science</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">History</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Biography</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="md:w-3/4">
+                <div class="bg-white p-6 rounded-lg shadow mb-6">
+                    <h1 class="text-2xl font-bold text-gray-800 mb-4">Welcome to GlanzBooks</h1>
+                    <p class="text-gray-600">Discover your next favorite book in our extensive digital library.</p>
+                </div>
+
+                <!-- Book Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Book cards will be dynamically populated here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img class="h-8 w-auto mb-4" src="https://firebasestorage.googleapis.com/v0/b/widecanvas-d0dd4.appspot.com/o/logos%2Flogo_glanzbooks.png?alt=media&token=8b08d256-18a7-46ee-8810-49ff523d0cf3" alt="GlanzBooks Logo">
+                    <p class="text-gray-600 text-sm">Your digital gateway to endless stories and knowledge.</p>
+                </div>
+                <div>
+                    <h4 class="text-gray-900 font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">About Us</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Contact</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-900 font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Fiction</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Non-Fiction</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Children's Books</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Academic</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-gray-900 font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-600 hover:text-primary text-xl"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-primary text-xl"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-primary text-xl"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-primary text-xl"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t mt-8 pt-8 text-center text-gray-600">
+                <p>&copy; 2024 GlanzBooks. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Sample books data
+        const books = [
+            { title: 'The Great Adventure', author: 'John Smith', cover: 'https://source.unsplash.com/random/800x600?book,1' },
+            { title: 'Mystery of the Ages', author: 'Sarah Johnson', cover: 'https://source.unsplash.com/random/800x600?book,2' },
+            { title: 'Future Perfect', author: 'Michael Brown', cover: 'https://source.unsplash.com/random/800x600?book,3' },
+            { title: 'The Hidden Truth', author: 'Emma Wilson', cover: 'https://source.unsplash.com/random/800x600?book,4' },
+            { title: 'Beyond the Stars', author: 'David Miller', cover: 'https://source.unsplash.com/random/800x600?book,5' },
+            { title: 'The Last Chapter', author: 'Lisa Anderson', cover: 'https://source.unsplash.com/random/800x600?book,6' }
+        ];
+
+        // Populate book grid
+        const bookGrid = document.querySelector('.grid');
+        books.forEach(book => {
+            const bookCard = document.createElement('div');
+            bookCard.className = 'bg-white rounded-lg shadow overflow-hidden';
+            bookCard.innerHTML = `
+                <img src="${book.cover}" alt="${book.title}" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold text-gray-800">${book.title}</h3>
+                    <p class="text-gray-600">${book.author}</p>
+                    <button class="mt-4 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 w-full">Read Now</button>
+                </div>
+            `;
+            bookGrid.appendChild(bookCard);
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
